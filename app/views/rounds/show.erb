@@ -1,0 +1,8 @@
+<h1>Question: </h1> <br>
+<%= @round.get_card %>
+
+<form action="/rounds/:id" method="post">
+  <input type="hidden" name"_method" value="put">
+  <input type="text" name="answer" placeholder="type your answer here...">
+  <input type="submit">
+</form>
