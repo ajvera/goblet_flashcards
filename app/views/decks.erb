@@ -1,0 +1,21 @@
+<h1><center>Team Goblet</center></h1>
+
+<h2><center>[ Flashcards ]</center></h2><br>
+
+<h3>Please select the deck you would like to play:</h3>
+
+
+<div class='container'>
+	<ul>
+		<% @decks.each do |deck| %>
+			<li>
+				<form method='post' action='/rounds'>
+		 			<%= deck.name %>:  ** amazing deck of flashcards ** 
+		 			<input type='submit' value='Play Deck'>
+		 			<input type='hidden' name='play_deck' value=<%= deck.id %>>
+		 		</form>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
