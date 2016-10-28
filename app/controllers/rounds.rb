@@ -5,5 +5,12 @@ get '/round/:id' do
 end
 
 post '/guesses' do
+ "missing route"
+
+# PSEUDOCODE GAME LOGIC AFTER USER GUESS:
+#  if correct, send success true query params,
+#   if incorrect, send success false param with correct answer included
+#     redirect to /round/:id with query params
+#     modify get route to look for these params and pass them to the view
 
 end
