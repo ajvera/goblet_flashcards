@@ -3,3 +3,7 @@ get '/round/:id' do
   @card = @round.get_card
   erb :'/rounds/show'
 end
+
+post '/guesses' do
+
+end
