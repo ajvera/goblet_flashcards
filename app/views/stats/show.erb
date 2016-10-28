@@ -1,0 +1,10 @@
+<h1>Congratulations! You've completed this deck!</h1><br><br>
+<h2>Stats for this round:</h2>
+<h3>Number of cards in the deck:</h3>
+<%= @round.deck.cards.count %>
+<h3>Number of cards guessed correctly on the first try:</h3>
+<%= @round.guesses.select { |g| g.correct == true && g.first_guess == true}.count %>
+<h3>Total number of guesses:</h3>
+<%= @round.guesses.count %>
+ 
+
