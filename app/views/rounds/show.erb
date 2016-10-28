@@ -1,8 +1,9 @@
-<h1>Question: </h1> <br>
-<%= @round.get_card %>
+<h1>Flashcards: <%= @round.deck.name %></h1>
 
-<form action="/rounds/:id" method="post">
-  <input type="hidden" name"_method" value="put">
+<h2>Question: </h2> <br>
+<%= @card.question %>
+
+<form action="/guesses" method="post">
   <input type="text" name="answer" placeholder="type your answer here...">
   <input type="submit">
 </form>
