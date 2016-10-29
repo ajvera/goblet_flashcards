@@ -1,6 +1,7 @@
 <h1>Flashcards: <%= @round.deck.name %></h1>
-
-<p><%= @previous_question_feedback %></p> <!-- Problem getting @previous_question_feedback to be accessible after redirect -->
+<% if @feedback %>
+<h3><%= @feedback %></h3> 
+<% end %><!-- Problem getting @previous_question_feedback to be accessible after redirect -->
 <h2>Question: </h2> <br>
 <%= @card.question %>
 
