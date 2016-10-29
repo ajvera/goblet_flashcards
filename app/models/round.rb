@@ -9,4 +9,12 @@ class Round < ActiveRecord::Base
     (all_cards - correct_cards).sample
   end
 
+
+  def num_correct_first_guesses
+  	correct_guesses = self.guesses.select do |guess|
+  		guess.correct == true && guess.first_guess == true
+  	end
+  	correct_guesses.count
+  end
+  
 end
