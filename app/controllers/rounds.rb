@@ -43,7 +43,7 @@ post '/guesses' do
 	#   if incorrect, send success false param with correct answer included
 	#     redirect to /round/:id with query params
 	#     modify get route to look for these params and pass them to the view
-		redirect "/round/#{@round.id}/stats" if @round.game_over
+		redirect "/round/#{@round.id}/stats" if @round.game_over?
 		redirect "/round/#{@round.id}?feedback=#{@previous_question_feedback}"
 	else
 		redirect "/"
