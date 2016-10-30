@@ -18,17 +18,17 @@ post '/guesses' do
 	unless @round.game_over?
 	 
 	 # if the answer is correct and this is NOT the first guess on that card...
-	 if @card.answer.downcase == params[:answer].downcase.rstrip && @round.guesses.where(card_id: params[:card_id]).any?
+	 if @card.answer.downcase == params[:answer].downcase.rstrip.lstrip && @round.guesses.where(card_id: params[:card_id]).any?
 	 	@previous_question_feedback = "Correct!"
 	 	Guess.create(round_id: @round.id, card_id: @card.id, correct: true, first_guess: false)
 	 
 	 # if the answer is correct and this is the first guess on that card...
-	 elsif @card.answer.downcase == params[:answer].downcase.rstrip && @round.guesses.where(card_id: params[:card_id]).none?
+	 elsif @card.answer.downcase == params[:answer].downcase.rstrip.lstrip && @round.guesses.where(card_id: params[:card_id]).none?
 	 	@previous_question_feedback = "Correct! And on your first try!!!"
 	 	Guess.create(round_id: @round.id, card_id: @card.id, correct: true, first_guess: true)
 	 
 	 # if the answer is incorrect on first try... 
-	 elsif @card.answer.downcase != params[:answer].downcase.rstrip && @round.guesses.where(card_id: params[:card_id]).none?
+	 elsif @card.answer.downcase != params[:answer].downcase.rstrip.lstrip && @round.guesses.where(card_id: params[:card_id]).none?
 	 	@previous_question_feedback = "Wrong! The correct answer was: #{@card.answer}"
 	 	Guess.create(round_id: @round.id, card_id: @card.id, correct: false, first_guess: true)
 
