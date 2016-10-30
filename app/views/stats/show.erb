@@ -3,8 +3,10 @@
 <h3>Number of cards in the deck:</h3>
 <%= @round.deck.cards.count %>
 <h3>Number of cards guessed correctly on the first try:</h3>
-<%= @round.guesses.select { |g| g.correct == true && g.first_guess == true}.count %>
+<%= @round.guesses.where(correct: true, first_guess: true).count %>
 <h3>Total number of guesses:</h3>
 <%= @round.guesses.count %>
- 
+ <% if @round.guesses.where(correct: true, first_guess: true).count == @round.deck.cards.count %>
+ <h1>YOU ROCK!</h1>
+ <% end %>
 

@@ -6,7 +6,7 @@ class Round < ActiveRecord::Base
   def get_card
     all_cards = self.deck.cards
     correct_cards = self.guesses.where(correct: true).map { |guess| guess.card }
-    (all_cards - correct_cards).sample
+    (all_cards - correct_cards).shuffle.sample
   end
 
 
@@ -15,6 +15,10 @@ class Round < ActiveRecord::Base
   		guess.correct == true && guess.first_guess == true
   	end
   	correct_guesses.count
+  end
+
+  def game_over?
+    self.deck.cards.count == self.guesses.where(correct: true).count
   end
   
 end
