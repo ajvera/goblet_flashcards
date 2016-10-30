@@ -1,6 +1,6 @@
 post '/rounds' do
-	@round = Round.create(deck_id: params[:id])
-	erb :rounds
+	@round = Round.create(deck_id: params[:deck_id])
+	redirect "/round/#{@round.id}"
 end
 
 get '/round/:id' do
